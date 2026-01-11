@@ -42,6 +42,12 @@ int _printf(const char *format, ...)
 				}
 				i += 1;
 			}
+			else if (Str[i + 1] == '%')
+			{
+				write(1, &Str[i], 1);
+				i += 1;
+				counter++;
+			}
 			else
 			{
 				write(1, &Str[i], 1);
