@@ -52,7 +52,16 @@ int _printf(const char *format, ...)
 			else if (Str[i + 1] == 'd' || Str[i + 1] == 'i')
 			{
 				num = va_arg(arg, int);
-				if (num < 0)
+				if (num == INT_MIN)
+				{
+					s = "-2147483648";
+					for (k = 0; s[k] != '\0'; k++)
+					{
+						counter++;
+						write(1, &s[k], 1);
+					}
+				}
+				else if (num < 0)
 				{
 					c = '-';
 					write(1, &c, 1);
@@ -68,18 +77,18 @@ int _printf(const char *format, ...)
 				}
 				else
 				{
-				while (num > 0)
-				{
-					nums[t] = (num % 10) + '0';
-					t++;
-					num = num / 10;
-				}
-				for (;t > -1; t--)
-				{
-					write(1, &nums[t], 1);
-					counter++;
-				}
-				i++;
+					while (num > 0)
+					{
+						nums[t] = (num % 10) + '0';
+						t++;
+						num = num / 10;
+					}
+					for (;t > -1; t--)
+					{
+						write(1, &nums[t], 1);
+						counter++;
+					}
+					i++;
 				}
 
 			}
