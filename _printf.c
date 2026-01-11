@@ -54,7 +54,8 @@ int _printf(const char *format, ...)
 				num = va_arg(arg, int);
 				if (num < 0)
 				{
-					write(1, '-', 1);
+					c = '-';
+					write(1, &c, 1);
 					counter++;
 					num = num * -1;
 				}
