@@ -48,6 +48,10 @@ int _printf(const char *format, ...)
 				i += 1;
 				counter++;
 			}
+			else if(Str[i + 1] == '\0')
+			{
+				break;
+			}
 			else
 			{
 				write(1, &Str[i], 1);
