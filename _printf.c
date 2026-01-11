@@ -78,18 +78,18 @@ int _printf(const char *format, ...)
 				}
 				else
 				{
+					t = 0; 
 					while (num > 0)
 					{
-						nums[t] = (num % 10) + '0';
-						t++;
-						num = num / 10;
+    						nums[t++] = (num % 10) + '0';
+    						num /= 10;
 					}
-					for (;t > -1; t--)
+					for (t = t - 1; t >= 0; t--)
 					{
-						write(1, &nums[t], 1);
-						counter++;
+    						write(1, &nums[t], 1);
+    						counter++;
 					}
-					i++;
+					i+=1;
 				}
 
 			}
