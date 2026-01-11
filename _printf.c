@@ -16,7 +16,10 @@ int _printf(const char *format, ...)
 	char c;
 	char *s;
 	int k;
+	int num;
 	int counter = 0;
+	int t;
+	char nums[12];
 	va_start(arg, format);
 	for (i = 0; Str[i] != '\0'; i++)
 	{
@@ -45,6 +48,38 @@ int _printf(const char *format, ...)
 					counter++;
 				}
 				i += 1;
+			}
+			else if (Str[i + 1] == 'd' || Str[i + 1] == 'i')
+			{
+				num = va_arg(arg, int);
+				if (num < 0)
+				{
+					write(1, '-', 1);
+					counter++;
+					num = num * -1;
+				}
+				else if(num == 0)
+				{
+					write(1, '0',1);
+					counter++;
+					i++;
+				}
+				else
+				{
+				while (num > 0)
+				{
+					nums[t] = (num % 10) + '0';
+					t++;
+					num = num / 10;
+				}
+				for (;t > -1; t--)
+				{
+					write(1, &nums[t], 1);
+					counter++;
+				}
+				i++;
+				}
+
 			}
 			else if (Str[i + 1] == '%')
 			{
