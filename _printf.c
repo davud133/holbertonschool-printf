@@ -50,7 +50,7 @@ int _printf(const char *format, ...)
 			}
 			else if(Str[i + 1] == '\0')
 			{
-				break;
+				return (counter);
 			}
 			else
 			{
