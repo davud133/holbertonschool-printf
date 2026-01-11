@@ -22,7 +22,11 @@ int _printf(const char *format, ...)
 	{
 		if (Str[i] == '%')
 		{
-			if (Str[i + 1] == 'c')
+			if(Str[i + 1] == '\0')
+			{
+				return (counter);
+			}
+			else if (Str[i + 1] == 'c')
 			{
 				c = va_arg(arg, int);
 				write(1, &c, 1);
@@ -47,11 +51,7 @@ int _printf(const char *format, ...)
 				write(1, &Str[i], 1);
 				i += 1;
 				counter++;
-			}
-			else if(Str[i + 1] == '\0')
-			{
-				return (counter);
-			}
+			}	
 			else
 			{
 				write(1, &Str[i], 1);
