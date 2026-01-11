@@ -68,6 +68,7 @@ int _printf(const char *format, ...)
 					write(1, &c, 1);
 					counter++;
 					num = num * -1;
+
 				}
 				else if(num == 0)
 				{
@@ -76,21 +77,18 @@ int _printf(const char *format, ...)
 					counter++;
 					i++;
 				}
-				else
+				t = 0; 
+				while (num > 0)
 				{
-					t = 0; 
-					while (num > 0)
-					{
-    						nums[t++] = (num % 10) + '0';
-    						num /= 10;
-					}
-					for (t = t - 1; t >= 0; t--)
-					{
-    						write(1, &nums[t], 1);
-    						counter++;
-					}
-					i+=1;
+    					nums[t++] = (num % 10) + '0';
+    					num /= 10;
 				}
+				for (t = t - 1; t >= 0; t--)
+				{
+    					write(1, &nums[t], 1);
+    					counter++;
+				}
+				i+=1;
 
 			}
 			else if (Str[i + 1] == '%')
