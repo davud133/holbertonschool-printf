@@ -61,7 +61,8 @@ int _printf(const char *format, ...)
 				}
 				else if(num == 0)
 				{
-					write(1, '0',1);
+					c = '0';
+					write(1, &c, 1);
 					counter++;
 					i++;
 				}
