@@ -76,6 +76,7 @@ int _printf(const char *format, ...)
 					write(1, &c, 1);
 					counter++;
 					i++;
+					continue
 				}
 				t = 0; 
 				while (num > 0)
